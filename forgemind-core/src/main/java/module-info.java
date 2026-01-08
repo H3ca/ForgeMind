@@ -1,4 +1,4 @@
-module io.h3ca.forgemind {
+module io.h3ca.forgemind.core {
     exports io.h3ca.forgemind.core.api;
     exports io.h3ca.forgemind.core.callbacks;
     exports io.h3ca.forgemind.core.layers;
@@ -7,8 +7,6 @@ module io.h3ca.forgemind {
     exports io.h3ca.forgemind.core.loss;
     exports io.h3ca.forgemind.core.optimizers;
     exports io.h3ca.forgemind.core.utils;
-
-    exports io.h3ca.forgemind.datasets;
 
     requires com.fasterxml.jackson.annotation;
     requires java.datatransfer;

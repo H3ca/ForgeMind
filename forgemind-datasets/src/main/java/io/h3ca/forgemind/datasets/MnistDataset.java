@@ -1,15 +1,14 @@
 package io.h3ca.forgemind.datasets;
 
-import io.h3ca.forgemind.core.api.DataLoader;
+import io.h3ca.forgemind.core.api.Dataset;
 import io.h3ca.forgemind.core.api.Tensor;
-
 import java.io.*;
 import java.util.Objects;
 import java.util.stream.IntStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public final class MnistDataset {
+public final class MnistDataset implements Dataset {
 
     private static final int IMAGE_MAGIC = 0x00000803;
     private static final int LABEL_MAGIC = 0x00000801;
@@ -88,7 +87,7 @@ public final class MnistDataset {
         this(0, train);
     }
 
-    public DataLoader.Batch loadBatch(int index, int size) {
+    public Batch loadBatch(int index, int size) {
         if (index < 0 || index >= this.numSamples)
             throw new IllegalArgumentException("Index out of bounds: " + index + ".");
         if (size <= 0)
@@ -117,7 +116,7 @@ public final class MnistDataset {
         Tensor x = new Tensor(imageTensorData, new int[]{numBatchSamples, this.rows, this.cols, this.channels});
         Tensor y = new Tensor(labelTensorData, new int[]{numBatchSamples, this.classes.length});
 
-        return new DataLoader.Batch(x, y);
+        return new Batch(x, y);
     }
 
     public void setNormalizationFactor(float value) {

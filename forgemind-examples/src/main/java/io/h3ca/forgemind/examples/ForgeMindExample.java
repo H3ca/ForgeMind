@@ -1,7 +1,6 @@
 package io.h3ca.forgemind.examples;
 
 import io.h3ca.forgemind.core.api.DataLoader;
-import io.h3ca.forgemind.datasets.MnistDataset;
 import io.h3ca.forgemind.core.api.Model;
 import io.h3ca.forgemind.core.api.Tensor;
 import io.h3ca.forgemind.core.callbacks.EarlyStopping;
@@ -17,6 +16,7 @@ import io.h3ca.forgemind.core.loss.CrossEntropy;
 import io.h3ca.forgemind.core.loss.LossFunction;
 import io.h3ca.forgemind.core.optimizers.Adam;
 import io.h3ca.forgemind.core.optimizers.Optimizer;
+import io.h3ca.forgemind.datasets.MnistDataset;
 
 import java.util.Arrays;
 

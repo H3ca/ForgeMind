@@ -1,34 +1,31 @@
 # ForgeMind
 
-## Project Structure
+## Overview
 
-ForgeMind currently ships as a single Maven module.  
-The project is designed to be split into multiple modules (core, datasets, examples) as the API stabilizes.
+ForgeMind is a lightweight Java machine learning framework.  
+The project currently ships as a **single Maven module**, but it is designed to be split into multiple modules (`core`, `datasets`, `examples`) as the API stabilizes.
 
 ---
 
 ## Requirements
 
-- Java 25 (JDK 25) is required to build and run ForgeMind.
+- **Java 25 (JDK 25)** is required to build and run ForgeMind.
+- Platform: **Windows (x64)**. Support for Linux and macOS is planned.
 
 ---
 
 ## Native Backend Support
 
-ForgeMind currently ships with a native backend for **Windows (x64)**.
-
-Support for Linux and macOS is planned but not yet available.
-
+ForgeMind uses **native libraries** for performance-critical operations.  
 If you attempt to run ForgeMind on an unsupported platform, the framework will fail fast with a clear error message.
+
+---
 
 ## Running ForgeMind with Native Libraries
 
-ForgeMind uses native libraries for performance-critical operations.  
-To run the framework, your JVM must allow **native access**, which requires a special flag.
+### JVM Option
 
-### Required JVM Option
+To allow the framework to access native code, your JVM must enable native access for the `core` module:
 
-All platforms require:
-
-```text
---enable-native-access=ALL-UNNAMED
+```bash
+--enable-native-access=io.h3ca.forgemind.core

@@ -123,7 +123,7 @@ public class Model {
 
             // Train loop
             while(trainDataset.hasNext()) {
-                DataLoader.Batch trainBatch = trainDataset.next();
+                Dataset.Batch trainBatch = trainDataset.next();
                 this.trainStep(trainBatch.x(), trainBatch.y());
             }
 
@@ -132,7 +132,7 @@ public class Model {
             float totalWeightedLoss = 0;
             int totalSamples = 0;
             while(testDataset.hasNext()) {
-                DataLoader.Batch batch = testDataset.next();
+                Dataset.Batch batch = testDataset.next();
                 Tensor batchPrediction = this.predict(batch.x());
 
                 int batchSize = batch.y().getShape()[0];

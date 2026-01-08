@@ -1,17 +1,15 @@
 package io.h3ca.forgemind.core.api;
 
-import io.h3ca.forgemind.datasets.MnistDataset;
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class DataLoader implements Iterator<DataLoader.Batch> {
+public class DataLoader implements Iterator<Dataset.Batch> {
 
-    private final MnistDataset dataset;
+    private final Dataset dataset;
     private final int batchSize;
     private int currentIndex = 0;
 
-    public DataLoader(MnistDataset dataset, int batchSize) {
+    public DataLoader(Dataset dataset, int batchSize) {
         if (dataset == null) throw new IllegalArgumentException("Dataset must not be null.");
         if (batchSize < 1) throw new IllegalArgumentException("Batch size must be > 0.");
 
@@ -25,10 +23,10 @@ public class DataLoader implements Iterator<DataLoader.Batch> {
     }
 
     @Override
-    public Batch next() {
+    public Dataset.Batch next() {
         if (!hasNext()) throw new NoSuchElementException();
 
-        Batch batch = this.dataset.loadBatch(this.currentIndex, this.batchSize);
+        Dataset.Batch batch = this.dataset.loadBatch(this.currentIndex, this.batchSize);
         this.currentIndex += this.batchSize;
         return batch;
     }
@@ -36,7 +34,5 @@ public class DataLoader implements Iterator<DataLoader.Batch> {
     public void reset() {
         this.currentIndex = 0;
     }
-
-    public record Batch(Tensor x, Tensor y) {}
 
 }
