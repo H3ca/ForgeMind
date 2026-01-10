@@ -28,4 +28,4 @@ If you attempt to run ForgeMind on an unsupported platform, the framework will f
 To allow the framework to access native code, your JVM must enable native access for the `core` module:
 
 ```bash
---enable-native-access=io.h3ca.forgemind.core
+--enable-native-access=ALL-UNNAMED
